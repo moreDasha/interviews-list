@@ -13,6 +13,8 @@ import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
+import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
 
 import App from './App.vue';
 import router from './router';
@@ -36,11 +38,13 @@ app.use(PrimeVue, {
     preset: Aura
   }
 });
+app.use(ToastService);
 
 app.component('app-menubar', Menubar);
 app.component('app-input-wrap', InputGroup);
 app.component('app-input-icon', InputGroupAddon);
 app.component('app-input-text', InputText);
 app.component('app-button', Button);
+app.component('app-toast-service', Toast);
 
 app.mount('#app');
