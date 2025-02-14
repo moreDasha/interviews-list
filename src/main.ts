@@ -15,6 +15,7 @@ import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
+import { ProgressSpinner } from 'primevue';
 
 import App from './App.vue';
 import router from './router';
@@ -46,5 +47,6 @@ app.component('app-input-icon', InputGroupAddon);
 app.component('app-input-text', InputText);
 app.component('app-button', Button);
 app.component('app-toast-service', Toast);
+app.component('app-progress', ProgressSpinner);
 
 app.mount('#app');
