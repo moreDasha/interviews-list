@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import type { IInterview } from '@/interfaces/interview';
 import { v4 as uuidv4 } from 'uuid';
+import { getAuth } from 'firebase/auth';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
+
+const dataBase = getFirestore();
+
+const router = useRouter();
 
 const company = ref<string>('');
 const vacancyLink = ref<string>('');
@@ -11,7 +18,11 @@ const whatsApp = ref<string>('');
 const phone = ref<string>('');
 const isLoading = ref<boolean>(false);
 
-const addInterview = () => {
+const addInterview = async (): Promise<void> => {
+  isLoading.value = true;
+
+  const userId = getAuth().currentUser?.uid;
+
   const payload: IInterview = {
     id: uuidv4(),
     company: company.value,
@@ -22,6 +33,14 @@ const addInterview = () => {
     phone: phone.value,
     createDate: new Date()
   };
+
+  if (userId) {
+    await setDoc(doc(dataBase, `users/${userId}/interviews`, payload.id), payload).then(() => {
+      router.push('/list');
+    })
+  } else {
+    isLoading.value = false; 
+  }
 };
 
 const isSubmitDisabled = computed<boolean>(() => {
