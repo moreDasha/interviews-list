@@ -20,30 +20,30 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/PageHome.vue'),
+    component: () => import('@/pages/PageHome.vue'),
     beforeEnter: isAuth
   },
   {
     path: '/auth',
     name: 'Auth',
-    component: () => import('@/views/PageAuth.vue')
+    component: () => import('@/pages/PageAuth.vue')
   },
   {
     path: '/list',
     name: 'List',
-    component: () => import('@/views/PageList.vue'),
+    component: () => import('@/pages/PageList.vue'),
     beforeEnter: isAuth
   },
   {
     path: '/interview:id',
     name: 'Interview',
-    component: () => import('@/views/PageInterview.vue'),
+    component: () => import('@/pages/PageInterview.vue'),
     beforeEnter: isAuth
   },
   {
     path: '/statistic',
     name: 'Statistic',
-    component: () => import('@/views/PageStatistic.vue'),
+    component: () => import('@/pages/PageStatistic.vue'),
     beforeEnter: isAuth
   }
 ];

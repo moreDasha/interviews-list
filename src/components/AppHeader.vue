@@ -59,10 +59,7 @@ const exit = async (): Promise<void> => {
         </router-link>
       </template>
       <template #end>
-        <button v-if="isAuth" @click="exit" class="flex align-items-center menu-exit">
-          <span class="pi pi-sign-out p-menuitem-icon"></span>
-          <span class="ml-2">Выход</span>
-        </button>
+        <app-button v-if="isAuth" @click="exit" icon="pi pi-sign-out" label="Выход"></app-button>
       </template>
     </app-menubar>
   </header>
@@ -71,5 +68,6 @@ const exit = async (): Promise<void> => {
 <style scoped>
 .app-menu {
   margin: 30px 0;
+  border-radius: 16px;
 }
 </style>

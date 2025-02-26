@@ -1,4 +1,4 @@
-import './assets/main.css';
+import './styles/main.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
@@ -7,7 +7,7 @@ import { createPinia } from 'pinia';
 import { initializeApp } from 'firebase/app';
 
 import PrimeVue from 'primevue/config';
-import Aura from '@primevue/themes/aura';
+import { PrimePreset } from './styles/PrimePreset';
 import Menubar from 'primevue/menubar';
 import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
@@ -37,7 +37,7 @@ app.use(createPinia());
 app.use(router);
 app.use(PrimeVue, {
   theme: {
-    preset: Aura
+    preset: PrimePreset
   }
 });
 app.use(ToastService);
