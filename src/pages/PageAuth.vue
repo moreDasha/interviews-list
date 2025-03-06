@@ -53,11 +53,11 @@ const login = async (): Promise<void> => {
 
 const submitForm = () => {
   if (isLogin.value) {
-    login(); 
+    login();
   } else {
     registration();
   }
-}
+};
 
 const handleLogin = () => {
   isLogin.value = !isLogin.value;
@@ -67,25 +67,69 @@ const handleLogin = () => {
 <template>
   <app-toast-service position="bottom-left"></app-toast-service>
   <div class="enter-block">
-    <div class="enter-block__greetings">
-      <div class="text-900 text-3xl font-medium mb-3">Приветствую!</div>
-      <span class="text-600 font-medium line-height-3">{{ subtitleText }}</span>
-      <button @click="handleLogin">{{ subtitleButtonText }}</button>
-    </div>
-    <form @submit.prevent="submitForm">
-      <app-input-wrap>
-        <app-input-icon>
-          <i class="pi pi-at"></i>
-        </app-input-icon>
-        <app-input-text v-model="email" placeholder="Email" />
-      </app-input-wrap>
-      <app-input-wrap>
-        <app-input-icon>
-          <i class="pi pi-user"></i>
-        </app-input-icon>
-        <app-input-text type="password" v-model="password" placeholder="Password" />
-      </app-input-wrap>
-      <app-button type="submit" :label="submitButtonText" :loading="isLoading"></app-button>
-    </form>
+    <app-card>
+      <template #title>
+        <div class="enter-block__header">
+          <span>{{ subtitleText }}</span>
+          <button class="enter-block__btn-change" @click="handleLogin">{{ subtitleButtonText }}</button>
+        </div>
+      </template>
+      <template #content>
+        <form @submit.prevent="submitForm" class="enter-block__form">
+          <app-input-wrap>
+            <app-input-icon>
+              <i class="pi pi-at"></i>
+            </app-input-icon>
+            <app-input-text v-model="email" placeholder="Email" />
+          </app-input-wrap>
+          <app-input-wrap>
+            <app-input-icon>
+              <i class="pi pi-user"></i>
+            </app-input-icon>
+            <app-input-text type="password" v-model="password" placeholder="Password" />
+          </app-input-wrap>
+          <app-button type="submit" :label="submitButtonText" :loading="isLoading"></app-button>
+        </form>
+      </template>
+    </app-card>
   </div>
 </template>
+
+<style scoped>
+.enter-block,
+.enter-block__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.enter-block {
+  gap: 24px;
+}
+
+.enter-block__header {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.enter-block__form {
+  gap: 18px;
+}
+
+.enter-block__form > button {
+  align-self: flex-start;
+}
+
+.enter-block__btn-change {
+  font-size: var(--p-card-title-font-size);
+  font-weight: var(--p-card-title-font-weight);
+  color: var(--p-primary-color);
+  transition: color var(--p-transition-duration);
+}
+
+@media(any-hover: hover) {
+  .enter-block__btn-change:hover {
+    color: var(--p-primary-hover-color);
+  }
+}
+</style>
