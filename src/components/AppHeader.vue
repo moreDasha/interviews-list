@@ -70,4 +70,10 @@ const exit = async (): Promise<void> => {
   margin: 30px 0;
   border-radius: 16px;
 }
+
+.router-link-active {
+  border-radius: var(--p-menubar-base-item-border-radius);
+  color: var(--p-menubar-item-focus-color);
+  background: var(--p-menubar-item-focus-background);
+}
 </style>

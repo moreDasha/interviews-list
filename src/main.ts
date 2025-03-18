@@ -17,6 +17,8 @@ import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import { ProgressSpinner } from 'primevue';
 import Card from 'primevue/card';
+import DataTable from 'primevue/datatable';
+import Column  from 'primevue/column';
 
 import App from './App.vue';
 import router from './router';
@@ -50,5 +52,7 @@ app.component('app-button', Button);
 app.component('app-toast-service', Toast);
 app.component('app-progress', ProgressSpinner);
 app.component('app-card', Card);
+app.component('app-table', DataTable);
+app.component('app-column', Column);
 
 app.mount('#app');

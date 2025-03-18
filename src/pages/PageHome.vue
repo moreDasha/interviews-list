@@ -3,12 +3,12 @@ import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import type { IInterview } from '@/interfaces/interview';
 import { v4 as uuidv4 } from 'uuid';
-import { getAuth } from 'firebase/auth';
 import { getFirestore, setDoc, doc } from 'firebase/firestore';
+import { useUserStore } from '@/stores/user';
 
 const dataBase = getFirestore();
-
 const router = useRouter();
+const userStore = useUserStore();
 
 const company = ref<string>('');
 const vacancyLink = ref<string>('');
@@ -21,7 +21,7 @@ const isLoading = ref<boolean>(false);
 const addInterview = async (): Promise<void> => {
   isLoading.value = true;
 
-  const userId = getAuth().currentUser?.uid;
+  const userId = userStore.userId;
 
   const payload: IInterview = {
     id: uuidv4(),
